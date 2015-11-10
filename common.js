@@ -1,7 +1,7 @@
 (function () {
 
   function preventScroll () {
-    document.body.addEventListener('touchmove', function (event) {
+    document.body.addEventListener('touchstart', function (event) {
       event.preventDefault();
     });
   }
