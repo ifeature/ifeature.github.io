@@ -106,12 +106,6 @@ function displayModal () {
     modals.classList.add('modals_show');
     document.body.classList.add('dimmed');
 
-    if (document.body.classList.contains('dimmed')) {
-      preventScroll();
-    } else {
-      allowScroll();
-    }
-
     if (storage.name) {
       name.value = storage.name;
       email.focus();
@@ -141,7 +135,6 @@ function displayModal () {
   closeLink.addEventListener('click', function () {
     modals.classList.remove('modals_show');
     document.body.classList.remove('dimmed');
-    allowScroll();
   });
 
   window.addEventListener('keydown', function (event) {
@@ -149,7 +142,6 @@ function displayModal () {
       if (modals.classList.contains('modals_show')) {
         modals.classList.remove('modals_show');
         document.body.classList.remove('dimmed');
-        allowScroll();
       }
     }
   });
