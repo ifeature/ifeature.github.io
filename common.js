@@ -141,11 +141,7 @@ function displayModal () {
   closeLink.addEventListener('click', function () {
     modals.classList.remove('modals_show');
     document.body.classList.remove('dimmed');
-    if (document.body.classList.contains('dimmed')) {
-      preventScroll();
-    } else {
-      allowScroll();
-    }
+    allowScroll();
   });
 
   window.addEventListener('keydown', function (event) {
@@ -153,11 +149,7 @@ function displayModal () {
       if (modals.classList.contains('modals_show')) {
         modals.classList.remove('modals_show');
         document.body.classList.remove('dimmed');
-        if (document.body.classList.contains('dimmed')) {
-          preventScroll();
-        } else {
-          allowScroll();
-        }
+        allowScroll();
       }
     }
   });
