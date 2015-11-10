@@ -1,5 +1,10 @@
 (function () {
 
+  function preventScroll () {
+    document.body.addEventListener('touchmove', function (event) {
+      event.preventDefault();
+    });
+  }
 
   function sendMail () {
     var modals = document.querySelector('.js-modals');
@@ -95,13 +100,7 @@ function displayModal () {
     modals.classList.add('modals_show');
     document.body.classList.add('dimmed');
 
-    document.body.addEventListener('touchmove', function(event) {
-      event.preventDefault();
-    });
-
-    window.addEventListener('scroll', function (event) {
-      return false;
-    });
+    preventScroll();
 
     if (storage.name) {
       name.value = storage.name;
