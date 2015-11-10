@@ -95,6 +95,10 @@ function displayModal () {
     modals.classList.add('modals_show');
     document.body.classList.add('dimmed');
 
+    window.addEventListener('scroll', function (event) {
+      return false;
+    });
+
     if (storage.name) {
       name.value = storage.name;
       email.focus();
@@ -134,6 +138,8 @@ function displayModal () {
       }
     }
   });
+
+  document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
 
 
 
