@@ -1,9 +1,15 @@
 (function () {
 
   function preventScroll () {
-    document.body.addEventListener('touchstart', function (event) {
+    document.body.addEventListener('touchmove', function (event) {
       event.preventDefault();
     });
+  }
+
+  function allowScroll () {
+    document.body.addEventListener('touchmove', function (event) {
+      return true;
+    })
   }
 
   function sendMail () {
@@ -131,6 +137,7 @@ function displayModal () {
   closeLink.addEventListener('click', function () {
     modals.classList.remove('modals_show');
     document.body.classList.remove('dimmed');
+    allowScroll();
   });
 
   window.addEventListener('keydown', function (event) {
@@ -138,6 +145,7 @@ function displayModal () {
       if (modals.classList.contains('modals_show')) {
         modals.classList.remove('modals_show');
         document.body.classList.remove('dimmed');
+        allowScroll();
       }
     }
   });
