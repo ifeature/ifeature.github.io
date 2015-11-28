@@ -1,8 +1,8 @@
 #ifeature.net
-Исходный код верстка моего сайта.    
+Исходный код верстки моего сайта.    
 
 ## Live-демонстрация:    
-[Здесь](http://ifeature.github.io/cv)  
+[Здесь](http://ifeature.github.io/)  
 
 ## Особенности:  
 * Jade
