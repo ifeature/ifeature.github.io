@@ -1,0 +1,423 @@
+@import '../libs/normalize-css/normalize.css'
+@import 'variables.styl'
+
+::selection {
+  background-color #cce2ff
+  color rgba(0,0,0,.87)
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0
+}
+.dimmed {
+  overflow hidden
+  position fixed
+  z-index 0
+}
+.base {
+  font-family font-family
+  font-size font-size_small
+  font-style normal
+  font-weight 400
+  text-rendering geometricPrecision
+  background-color #fff
+  color color_base
+  -webkit-tap-highlight-color transparent
+  box-sizing border-box
+  * {
+    box-sizing inherit
+  }
+  @media (min-width 600px) {
+    font-size font-size_regular
+  }
+}
+.page {
+  margin: 0;
+  padding: 0;
+  font-size font-size_page
+  line-height line-height_page
+
+  display flex
+  flex-direction column
+  min-height 100vh
+  min-width 320px
+}
+
+.page__content {
+  background-color #fff
+  flex-grow 1
+  margin-bottom line-height_page + 1.5rem * 2
+  @media (min-width 600px) {
+    margin-bottom line-height_page + 2.5rem * 2
+  }
+}
+
+
+.page__section {
+  padding 1.5rem 5%
+  @media (min-width 600px) {
+    padding 2.5rem 10%
+  }
+  @media (min-width 1440px) {
+    padding 2.5rem 15%
+  }
+  &_intro {
+    position relative
+    padding 10rem 5% 3.5rem
+    display flex
+    flex-direction column
+    overflow hidden
+    @media (min-width 600px) {
+      padding 15rem 10% 2rem
+      min-height 100vh
+    }
+    @media (min-width 1440px) {
+      padding 20rem 15% 3rem
+    }
+    @media (min-height 500px) {
+      min-height 100vh
+    }
+  }
+  &_gray {
+    background-color color_gray
+    box-shadow 0 0 3px 0 #aaa
+  }
+  @media (min-width 960px) {
+    padding-right 30%
+  }
+}
+
+.more {
+  display none
+  text-align center
+  overflow hidden
+  margin-top auto
+  will-change opacity
+  &__icon {
+
+  }
+  &__description {
+    @supports (-webkit-background-clip text) {
+      background linear-gradient(to right, #4d4d4d 30%, #3498db 50%, #4d4d4d 80%)
+      -webkit-background-clip text
+      background-clip text
+    }
+
+    -moz-text-fill-color transparent
+    -webkit-text-fill-color transparent
+    text-fill-color transparent
+
+    animation-name slide
+    animation-duration 4s
+    animation-timing-function linear
+    animation-iteration-count infinite
+    animation-fill-mode both
+
+    -webkit-user-select none
+    user-select none
+  }
+  @media (min-height 500px) {
+    display block
+  }
+  @media (min-width 960px) {
+    margin-right -30%
+  }
+}
+
+.title {
+  font-weight 300
+  color color_blue
+  margin 2rem 0 1rem
+  font-size 2.5rem
+  line-height 4.375rem
+  &_main {
+    font-weight 300
+    font-size 3.5rem
+    line-height 4.9rem
+    will-change transform, filter
+    transition transform, filter .3s
+  }
+  &_contacts {
+    margin 2rem 0 2rem
+  }
+}
+
+.description {
+  &_main {
+    transform translate3d(0, 0, 0)
+    will-change transform, filter, -webkit-filter, opacity
+    transition transform, filter, -webkit-filter, opacity .3s
+  }
+}
+.navigation {
+  box-shadow 0 0 3px 0 #aaa
+  position fixed
+  background-color #fff
+  display flex
+  width 100%
+  justify-content space-between
+  align-items center
+  padding 1.5rem 5%
+  text-align center
+  z-index 20
+  @media (min-width 600px) {
+    padding 2.5rem 10%
+  }
+  @media (min-width 1440px) {
+    padding 2.5rem 15%
+  }
+}
+
+.logo {
+  position relative
+  // font-size 2.8rem
+  //line-height 4.7rem
+  line-height 0
+  color color_blue
+  text-decoration none
+  letter-spacing .1rem
+  transition: all .3s
+  &__text {
+    display none
+  }
+  &:hover {
+    color color_blue_hover
+  }
+  &:active {
+    color color_blue_active
+  }
+  &::after {
+    display none
+    content ''
+    position absolute
+    bottom -5px
+    left 0
+    right 0
+    height 2px
+    background-color color_blue
+    transition all .3s
+    opacity 0
+  }
+  &:hover::after {
+    opacity 1
+    bottom 0
+    background-color color_blue_hover
+  }
+  &:active::after {
+    background-color color_blue_active
+  }
+  @media (min-width 600px) {
+    font-size 3.4rem
+  }
+}
+
+.button {
+  font-size 1.8rem
+  display block
+  outline none
+  border none
+  background-color #fff
+  border 2px solid
+  color color_green
+  border-color color_green
+  border-radius 4px
+  padding .9rem 2rem
+  transition all .3s
+  &:hover {
+    color color_green_hover
+    border-color color_green_hover
+  }
+  &:active {
+    color color_green_active
+    border-color color_green_active
+  }
+  &_send {
+    background-image url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%2325cf65%22%20width%3D%2215%22%20height%3D%2215%22%20viewBox%3D%220%200%2031.806%2031.806%22%3E%3Cpath%20d%3D%22M1.286%2012.465c-.685.263-1.17.88-1.268%201.606-.096.73.213%201.45.806%201.88l6.492%204.73L30.374%202.54%209.984%2022.62l8.876%206.46c.564.41%201.293.532%201.964.33.67-.205%201.204-.714%201.444-1.37l9.494-25.985c.096-.264.028-.56-.172-.756-.2-.2-.494-.26-.758-.16L1.286%2012.462zm4.488%209.78l.055.3%201.26%206.89c.09.513.43.94.91%201.15.473.205%201.022.16%201.46-.12%201.753-1.13%204.045-2.634%203.983-2.72l-7.673-5.5z%22/%3E%3C/svg%3E%0A')
+    background-repeat no-repeat
+    background-size 1.5rem
+    background-position center right -2rem
+    will-change padding, background-position
+    &:hover, &:active {
+      padding: .9rem 3rem .9rem 1rem;
+      background-position center right 1rem
+    }
+  }
+}
+
+.modals {
+  visibility hidden
+  background-color rgba(0,0,0,.85)
+  opacity 0
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  transition all .6s
+  will-change opacity, background-color, visibility
+  transform translateZ(0) translate3D(0,0,0)
+  &_show {
+    visibility visible
+    opacity 1
+    z-index 100
+  }
+}
+
+.modal {
+  position absolute
+  top 50%
+  left 50%
+  transform translate(-50%,-50%)
+  width 80%
+  max-width 500px
+  background-color #fff
+  border-radius 4px
+  padding 3rem
+  box-shadow 1px 3px 3px 0 rgba(0,0,0,.2),1px 3px 15px 2px rgba(0,0,0,.2)
+  z-index 10
+  @media (min-height 50px) and (max-height 360px) {
+    padding 1rem
+  }
+  @media (min-width 600px) {
+    width 80%
+    max-width 600px
+    padding 2rem
+  }
+
+}
+
+.modal__form {
+  display flex
+  flex-flow row wrap
+}
+
+.modal__formgroup {
+  flex 1 1 100%
+  margin 0
+  margin-bottom 4rem
+  padding 0
+  border 0
+  @media (min-height 50px) and (max-height 360px) {
+    margin-bottom 1rem
+    order 2
+    &_small {
+      order: 0;
+      flex: 0 1 60%;
+      margin-right: 5%;
+      & + & {
+        order 1
+      }
+    }
+  }
+  @media (min-width 600px) {
+    margin-bottom 6rem
+    &_small {
+      flex 1 1 45%
+      &:first-child {
+        margin-right 5%
+      }
+    }
+  }
+}
+
+.modal__footer {
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+  // align-items center
+  flex-grow 1
+}
+
+.modal__input {
+  font-family font-family
+  width 100%
+  border 0
+  outline none
+  border-bottom 2px solid color_base
+  padding 1rem 2rem
+  &:-webkit-autofill {
+    box-shadow 0 0 0 1000px white inset
+  }
+  &:required:invalid {
+    color color_error
+  }
+  &:focus {
+    border-bottom-color color_blue
+  }
+}
+
+.modal__textarea {
+  resize none
+  &:required:invalid {
+    color color_error
+  }
+}
+
+.modal__close {
+  position relative
+  border 0
+  outline none
+  padding 1.5rem
+  line-height 0
+  border-radius 4px
+  background-color color_blue
+  &:hover {
+    background-color color_blue_hover
+  }
+  &:active {
+    background-color color_blue_active
+  }
+}
+
+.social {
+  display flex
+  align-items center
+  color color_base
+  text-decoration none
+  margin-bottom 2rem
+  &__description {
+    padding-left 2rem
+  }
+  &:hover > svg {
+    fill color_green_hover
+  }
+  &:active > svg {
+    fill color_green_active
+  }
+}
+.page__footer {
+  position fixed
+  bottom 0
+  left 0
+  width 100%
+  z-index -1
+  min-height 1vh
+}
+
+.copyright {
+  margin 0
+  font-weight 300
+  padding 1.5rem 5%
+  text-align center
+  @media (min-width 600px) {
+    padding 2.5rem 10%
+  }
+  @media (min-width 1440px) {
+    padding 2.5rem 15%
+  }
+}
+
+@keyframes slide {
+  0% {
+    background-position: -300px top
+  }
+  100%{
+    background-position: 300px top
+  }
+}

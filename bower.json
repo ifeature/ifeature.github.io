@@ -1,0 +1,25 @@
+{
+  "name": "cv",
+  "description": "cv",
+  "version": "0.1.1",
+  "main": "index.js",
+  "homepage": "http://ifeature.github.io/cv",
+  "author": "ifeature",
+  "license": "MIT",
+  "keywords": [
+    "cv"
+  ],
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "normalize.css#~3.0.3"
+  }
+}
