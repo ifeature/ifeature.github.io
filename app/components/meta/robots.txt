@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /?
+Disallow: /404.html
+Host: ifeature.net
+Sitemap: http://ifeature.net/sitemap.xml

@@ -1,17 +1,6 @@
 (function () {
   'use strict';
-
-  function preventScroll () {
-    document.body.addEventListener('touchmove', function (event) {
-      event.preventDefault();
-    });
-  }
-
-  function allowScroll () {
-    document.body.addEventListener('touchmove', function (event) {
-      return true;
-    })
-  }
+  var progressBar;
 
   function parallaxing () {
 
@@ -22,7 +11,7 @@
     var parallaxMore = parallax.childNodes[2];
 
     window.addEventListener('scroll', function () {
-      if (this.innerWidth > 600 && this.pageYOffset < 600) {
+      if (this.innerWidth > 600 && this.pageYOffset < 750) {
         wScroll = this.pageYOffset; //window.scrollTop()
         var params = {
           translateYMore: Math.round(wScroll / 2),
@@ -38,13 +27,13 @@
         parallaxParagraph.setAttribute('style',
           'opacity:' + params.opacityMore + ';transform:translate3d(0,0,0) translateY(' + params.translateYLess + '%);color:rgba(71,82,82,' + params.opacityMore + ');');
 
-          // parallaxParagraph.setAttribute('style',
-          //   'opacity:' + params.opacityMore + ';transform:translate3d(0,0,0);translateY(' + params.translateY + '%);-webkit-filter:blur(' + params.blur + 'px);filter:blur(' + params.blur + 'px);');
+        // parallaxParagraph.setAttribute('style',
+        //   'opacity:' + params.opacityMore + ';transform:translate3d(0,0,0);translateY(' + params.translateY + '%);-webkit-filter:blur(' + params.blur + 'px);filter:blur(' + params.blur + 'px);');
 
-          parallaxMore.setAttribute('style',
-            'opacity:' + params.opacityLess + ';');
+        parallaxMore.setAttribute('style',
+          'opacity:' + params.opacityLess + ';');
 
-        // console.log(wScroll);
+        //console.log(wScroll);
       }
     });
   }
@@ -55,11 +44,11 @@
       'message': {
         'from_email': email,
         'to': [
-        {
-          'email': 'me@ifeature.net',
-          'name': 'YOUR_RECEIVER_NAME',
-          'type': 'to'
-        }
+          {
+            'email': 'me@ifeature.net',
+            'name': 'YOUR_RECEIVER_NAME',
+            'type': 'to'
+          }
         ],
         'subject': 'Новое сообщение от ' + name + '',
         'html': message
@@ -130,20 +119,7 @@
         name.focus();
       }
 
-    // if (local.name) {
-    //   name.value = local.name;
-    //   email.focus();
-    // }
-    // if (local.email) {
-    //   email.value = local.email;
-    //   message.focus();
-    // }
-    // if (local.message) {
-    //   message.value = local.message;
-    //   name.focus();
-    // }
-
-  });
+    });
 
     closeLink.addEventListener('click', function () {
       modals.classList.remove('modals_show');
@@ -177,10 +153,28 @@
       email.value = '';
       message.value = '';
     });
-
   }
+
+  progressBar = function(){
+    var doc, main, progressOuter, progressInner, max, percent;
+    doc = document;
+    main = document.getElementsByTagName('main')[0];
+    progressOuter = doc.createElement('div');
+    progressInner = progressOuter.cloneNode(true);
+    progressOuter.classList.add('js-progress-bar');
+    progressOuter.appendChild(progressInner);
+
+    main.insertBefore(progressOuter, main.firstElementChild);
+
+    addEventListener('scroll', function(){
+      max = doc.body.scrollHeight - innerHeight;
+      percent = (pageYOffset / max) * 100;
+      progressInner.style.width = percent + "%";
+    });
+  };
 
   displayModal();
   parallaxing();
+  progressBar();
 })();
 

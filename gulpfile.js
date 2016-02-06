@@ -1,35 +1,35 @@
 'use strict';
 
 var gulp = require('gulp'),
-del = require('del'),
-runSequence = require('run-sequence'),
-path = require('path'),
-mqpacker = require('css-mqpacker'),
+    del = require('del'),
+    runSequence = require('run-sequence'),
+    path = require('path'),
+    mqpacker = require('css-mqpacker'),
 
-postcss = require('gulp-postcss'),
-atImport = require('postcss-import'),
-customProperties = require('postcss-custom-properties'),
-nested = require('postcss-nested'),
-zindex = require('postcss-zindex'),
-cssnano = require('cssnano'),
-autoprefixer = require('autoprefixer'),
+    postcss = require('gulp-postcss'),
+    atImport = require('postcss-import'),
+    customProperties = require('postcss-custom-properties'),
+    nested = require('postcss-nested'),
+    zindex = require('postcss-zindex'),
+    cssnano = require('cssnano'),
+    autoprefixer = require('autoprefixer'),
 
-stylus = require('gulp-stylus'),
-jade = require('gulp-jade'),
-notify = require('gulp-notify'),
-webserver = require('gulp-webserver'),
-csscomb = require('gulp-csscomb'),
-rename = require('gulp-rename'),
-uglify = require('gulp-uglify'),
-changed = require('gulp-changed'),
-plumber = require('gulp-plumber'),
-copy = require('gulp-copy'),
-sourcemaps = require('gulp-sourcemaps');
+    stylus = require('gulp-stylus'),
+    jade = require('gulp-jade'),
+    notify = require('gulp-notify'),
+    webserver = require('gulp-webserver'),
+    csscomb = require('gulp-csscomb'),
+    rename = require('gulp-rename'),
+    uglify = require('gulp-uglify'),
+    changed = require('gulp-changed'),
+    plumber = require('gulp-plumber'),
+    copy = require('gulp-copy'),
+    sourcemaps = require('gulp-sourcemaps');
 
 var parametres = {
   source: 'app/',
   build: 'dist/'
-}
+};
 
 gulp.task('start', function () {
   gulp.src(parametres.build)

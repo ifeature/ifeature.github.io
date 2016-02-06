@@ -5,6 +5,7 @@
   background-color #cce2ff
   color rgba(0,0,0,.87)
 }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -15,18 +16,20 @@
   clip: rect(0,0,0,0);
   border: 0
 }
+
 .dimmed {
   overflow hidden
   position fixed
-  z-index 0
+  z-index 3
 }
+
 .base {
   font-family font-family
   font-size font-size_small
   font-style normal
   font-weight 400
   text-rendering geometricPrecision
-  background-color #fff
+  background-color color_green
   color color_base
   -webkit-tap-highlight-color transparent
   box-sizing border-box
@@ -38,26 +41,41 @@
   }
 }
 .page {
-  margin: 0;
-  padding: 0;
+  margin 0
+  padding 0
   font-size font-size_page
   line-height line-height_page
-
   display flex
   flex-direction column
   min-height 100vh
   min-width 320px
-}
-
-.page__content {
-  background-color #fff
-  flex-grow 1
-  margin-bottom line-height_page + 1.5rem * 2
-  @media (min-width 600px) {
-    margin-bottom line-height_page + 2.5rem * 2
+  &_inner .page__section_intro {
+    min-height initial
   }
 }
 
+.page__header {
+  position fixed
+  background-color rgba(255,255,255,.9)
+  width 100%
+  z-index 1
+  @media (min-width 960px) {
+    max-width sidebar-width
+    background-color #212121
+  }
+}
+.page__content {
+  background-color #fff
+  box-shadow 0 0 3px 0 #aaa
+  flex-grow 1
+  margin-bottom line-height_page + 3.5rem
+  @media (min-width 600px) {
+    margin-bottom line-height_page + 5.5rem
+  }
+  @media (min-width 960px) {
+    padding-left sidebar-width
+  }
+}
 
 .page__section {
   padding 1.5rem 5%
@@ -66,6 +84,9 @@
   }
   @media (min-width 1440px) {
     padding 2.5rem 15%
+  }
+  @media (min-width 960px) {
+    padding-right 30%
   }
   &_intro {
     position relative
@@ -88,8 +109,12 @@
     background-color color_gray
     box-shadow 0 0 3px 0 #aaa
   }
-  @media (min-width 960px) {
-    padding-right 30%
+  &_footer {
+    display flex
+    justify-content space-between
+    @media (min-width 960px) {
+      padding-right 10%
+    }
   }
 }
 
@@ -157,17 +182,20 @@
 }
 .navigation {
   box-shadow 0 0 3px 0 #aaa
-  position fixed
-  background-color #fff
   display flex
-  width 100%
   justify-content space-between
   align-items center
   padding 1.5rem 5%
   text-align center
-  z-index 20
   @media (min-width 600px) {
     padding 2.5rem 10%
+  }
+  @media (min-width 960px) {
+    padding 0 0 2.5rem
+    min-height 100vh
+    flex-wrap wrap
+    justify-content center
+    align-content space-between
   }
   @media (min-width 1440px) {
     padding 2.5rem 15%
@@ -215,13 +243,17 @@
   @media (min-width 600px) {
     font-size 3.4rem
   }
+  @media (min-width 960px) {
+    flex-grow 1
+    padding 2.5rem
+    background-color #fff
+  }
 }
 
 .button {
   font-size 1.8rem
   display block
   outline none
-  border none
   background-color #fff
   border 2px solid
   color color_green
@@ -238,14 +270,33 @@
     border-color color_green_active
   }
   &_send {
+    font-size 0
+    border-radius 50%
+    width 5rem
+    height 5rem
+    padding 0
+    background-position center center
+    background-size 1.8rem
     background-image url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20fill%3D%22%2325cf65%22%20width%3D%2215%22%20height%3D%2215%22%20viewBox%3D%220%200%2031.806%2031.806%22%3E%3Cpath%20d%3D%22M1.286%2012.465c-.685.263-1.17.88-1.268%201.606-.096.73.213%201.45.806%201.88l6.492%204.73L30.374%202.54%209.984%2022.62l8.876%206.46c.564.41%201.293.532%201.964.33.67-.205%201.204-.714%201.444-1.37l9.494-25.985c.096-.264.028-.56-.172-.756-.2-.2-.494-.26-.758-.16L1.286%2012.462zm4.488%209.78l.055.3%201.26%206.89c.09.513.43.94.91%201.15.473.205%201.022.16%201.46-.12%201.753-1.13%204.045-2.634%203.983-2.72l-7.673-5.5z%22/%3E%3C/svg%3E%0A')
     background-repeat no-repeat
-    background-size 1.5rem
-    background-position center right -2rem
     will-change padding, background-position
-    &:hover, &:active {
-      padding: .9rem 3rem .9rem 1rem;
-      background-position center right 1rem
+    @media (min-width 600px) {
+      font-size 1.8rem
+      border-radius 4px
+      width auto
+      height auto
+      padding .9rem 2rem
+      background-size 1.5rem
+      background-position center right -2rem
+      &:hover, &:active {
+        padding: .9rem 3rem .9rem 1rem;
+        background-position center right 1rem
+      }
+    }
+    @media (min-width 960px) {
+      color rgb(170,170,170)
+      border-color rgb(170,170,170)
+      background-color transparent
     }
   }
 }
@@ -265,7 +316,7 @@
   &_show {
     visibility visible
     opacity 1
-    z-index 100
+    z-index 1000
   }
 }
 
@@ -398,18 +449,66 @@
   width 100%
   z-index -1
   min-height 1vh
+  border-bottom 5px solid color_green
+  @media (min-width 960px) {
+    padding-left sidebar-width
+  }
 }
 
 .copyright {
   margin 0
+  font-size 1.6rem
   font-weight 300
-  padding 1.5rem 5%
   text-align center
-  @media (min-width 600px) {
-    padding 2.5rem 10%
+  &__item {
+    &_secondary {
+      display none
+      @media (min-width 960px){
+        display inline
+      }
+    }
   }
-  @media (min-width 1440px) {
-    padding 2.5rem 15%
+  &__author {
+    font-style normal
+  }
+}
+
+.anchor-link {
+  font-weight 400
+  position relative
+  color #f2337d
+  margin-right 1rem
+  text-decoration none
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color #f2337d
+  }
+  &::after {
+    content '#'
+  }
+}
+
+.skills {
+  &__skill_new {
+    text-decoration none
+  }
+}
+
+
+.js-progress-bar {
+  position fixed
+  top 0
+  left 0
+  right 0
+  @media (min-width 960px) {
+    left 20rem
+  }
+  > div {
+    height 5px
+    background-color color_green
+    width 0
   }
 }
 
