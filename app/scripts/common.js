@@ -68,7 +68,6 @@
 
   }
 
-
   function displayModal () {
     var openlink = document.querySelector('.js-modal-show');
     var modals = document.querySelector('.js-modals');
